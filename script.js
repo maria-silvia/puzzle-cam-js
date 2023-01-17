@@ -17,8 +17,6 @@ function main() {
 function initCanvas() {
   CANVAS = document.getElementById("myCanvas");
   CONTEXT = CANVAS.getContext("2d");
-  CANVAS.width = window.innerWidth;
-  CANVAS.height = window.innerHeight;
 }
 
 function initCamera() {
@@ -30,6 +28,7 @@ function initCamera() {
       VIDEO.play();
       VIDEO.onloadeddata = function () {
         scaleCanvas();
+        window.addEventListener("resize", scaleCanvas);
         updateCanvas();
       };
     })
@@ -39,6 +38,8 @@ function initCamera() {
 }
 
 function scaleCanvas() {
+  CANVAS.width = window.innerWidth;
+  CANVAS.height = window.innerHeight;
   let resizer =
     SCALER *
     Math.min(
