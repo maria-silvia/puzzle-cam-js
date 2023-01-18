@@ -12,8 +12,8 @@ let BASE = {
 };
 
 let PUZZLE = {
-  rows: 3,
-  columns: 3,
+  rows: 5,
+  columns: 5,
 };
 
 let PIECES = [];
@@ -23,10 +23,25 @@ function main() {
   initCamera();
 }
 
+// this method runs all the time as it is an Animation
 function updateCanvas() {
-  CONTEXT.drawImage(VIDEO, BASE.x, BASE.y, BASE.width, BASE.height);
+  // this used to draw the video over the BASE
+  // CONTEXT.drawImage(VIDEO, BASE.x, BASE.y, BASE.width, BASE.height);
+
+  CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
   for (let i = 0; i < PIECES.length; i++) {
     PIECES[i].draw(CONTEXT);
   }
   window.requestAnimationFrame(updateCanvas);
+}
+
+function randomizePieces() {
+  for (let i = 0; i < PIECES.length; i++) {
+    // the random generates number between 0 and 1
+    // so need to scale
+    let x = Math.random() * (CANVAS.width - PIECES[i].width);
+    let y = Math.random() * (CANVAS.height - PIECES[i].height);
+    PIECES[i].x = x;
+    PIECES[i].y = y;
+  }
 }
