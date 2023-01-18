@@ -1,3 +1,5 @@
+/*------------------------------------------------*/
+/*            GLOBAL VARIABLES                    */
 let VIDEO = null;
 let CANVAS = null;
 let CONTEXT = null;
@@ -5,7 +7,7 @@ let SCALER = 0.8; // screen space used by the image
 
 //  base do puzzle, onde ele deve ser montado
 let BASE = {
-  x: 0,
+  x: 0, // x e y de canto superior esquerdo
   y: 0,
   width: 0,
   height: 0,
@@ -13,17 +15,21 @@ let BASE = {
 
 let PUZZLE = {
   rows: 5,
-  columns: 5,
+  columns: 4,
 };
 
 let PIECES = [];
+let SELECTED_PIECE = null;
+
+/*------------------------------------------------*/
 
 function main() {
   initCanvas();
   initCamera();
+  addEventListeners();
 }
 
-// this method runs all the time as it is an Animation
+// this method runs all the time as it makes an Animation
 function updateCanvas() {
   CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
 
@@ -36,15 +42,4 @@ function updateCanvas() {
     PIECES[i].draw(CONTEXT);
   }
   window.requestAnimationFrame(updateCanvas);
-}
-
-function randomizePieces() {
-  for (let i = 0; i < PIECES.length; i++) {
-    // the random generates number between 0 and 1
-    // so need to scale
-    let x = Math.random() * (CANVAS.width - PIECES[i].width);
-    let y = Math.random() * (CANVAS.height - PIECES[i].height);
-    PIECES[i].x = x;
-    PIECES[i].y = y;
-  }
 }

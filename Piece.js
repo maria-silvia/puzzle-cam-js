@@ -3,8 +3,11 @@ class Piece {
     this.width = BASE.width / PUZZLE.columns;
     this.height = BASE.height / PUZZLE.rows;
 
-    this.x = BASE.x + colIndex * this.width;
-    this.y = BASE.y + rowIndex * this.height;
+    this.target_x = BASE.x + colIndex * this.width;
+    this.target_y = BASE.y + rowIndex * this.height;
+
+    this.x = this.target_x;
+    this.y = this.target_y;
 
     this.rowIndex = rowIndex;
     this.colIndex = colIndex;
@@ -31,5 +34,20 @@ class Piece {
     // contorno
     context.rect(this.x, this.y, this.width, this.height);
     context.stroke();
+  }
+
+  isCloseToTarget() {
+    let threshold = Math.min(this.width / 5, this.height / 5);
+    let cursor = { x: this.x, y: this.y };
+    let target = { x: this.target_x, y: this.target_y };
+    if (distance(cursor, target) < threshold) {
+      return true;
+    }
+    return false;
+  }
+
+  snapInPlace() {
+    this.x = this.target_x;
+    this.y = this.target_y;
   }
 }
