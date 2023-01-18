@@ -1,7 +1,7 @@
 class Piece {
   constructor(rowIndex, colIndex) {
-    this.x = CANVAS.x + colIndex * PUZZLE.pieceWidth;
-    this.y = CANVAS.y + rowIndex * PUZZLE.pieceHeight;
+    this.x = BASE.x + colIndex * PUZZLE.pieceWidth;
+    this.y = BASE.y + rowIndex * PUZZLE.pieceHeight;
     this.rowIndex = rowIndex;
     this.colIndex = colIndex;
   }

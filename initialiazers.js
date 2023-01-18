@@ -1,6 +1,6 @@
 function initCanvas() {
-  CANVAS.element = document.getElementById("myCanvas");
-  CONTEXT = CANVAS.element.getContext("2d");
+  CANVAS = document.getElementById("myCanvas");
+  CONTEXT = CANVAS.getContext("2d");
 }
 
 function initCamera() {
@@ -21,28 +21,28 @@ function initCamera() {
     });
 }
 
-function initPieces() {
-  PIECES = [];
-  PUZZLE.pieceWidth = CANVAS.width / PUZZLE.columns;
-  PUZZLE.pieceHeight = CANVAS.height / PUZZLE.rows;
-  for (let r = 0; r < PUZZLE.rows; r++) {
-    for (let c = 0; c < PUZZLE.columns; c++) {
-      PIECES.push(new Piece(r, c));
-    }
-  }
-}
-
 function scaleCanvas() {
-  CANVAS.element.width = window.innerWidth;
-  CANVAS.element.height = window.innerHeight;
+  CANVAS.width = window.innerWidth;
+  CANVAS.height = window.innerHeight;
   let resizer =
     SCALER *
     Math.min(
       window.innerWidth / VIDEO.videoWidth,
       window.innerHeight / VIDEO.videoHeight
     );
-  CANVAS.width = resizer * VIDEO.videoWidth;
-  CANVAS.height = resizer * VIDEO.videoHeight;
-  CANVAS.x = window.innerWidth / 2 - CANVAS.width / 2;
-  CANVAS.y = window.innerHeight / 2 - CANVAS.height / 2;
+  BASE.width = resizer * VIDEO.videoWidth;
+  BASE.height = resizer * VIDEO.videoHeight;
+  BASE.x = window.innerWidth / 2 - BASE.width / 2;
+  BASE.y = window.innerHeight / 2 - BASE.height / 2;
+}
+
+function initPieces() {
+  PIECES = [];
+  PUZZLE.pieceWidth = BASE.width / PUZZLE.columns;
+  PUZZLE.pieceHeight = BASE.height / PUZZLE.rows;
+  for (let r = 0; r < PUZZLE.rows; r++) {
+    for (let c = 0; c < PUZZLE.columns; c++) {
+      PIECES.push(new Piece(r, c));
+    }
+  }
 }

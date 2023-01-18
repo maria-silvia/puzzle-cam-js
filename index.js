@@ -1,9 +1,10 @@
 let VIDEO = null;
+let CANVAS = null;
 let CONTEXT = null;
 let SCALER = 0.8; // screen space used by the image
 
-let CANVAS = {
-  element: null,
+//  base do puzzle, onde ele deve ser montado
+let BASE = {
   x: 0,
   y: 0,
   width: 0,
@@ -25,7 +26,7 @@ function main() {
 }
 
 function updateCanvas() {
-  CONTEXT.drawImage(VIDEO, CANVAS.x, CANVAS.y, CANVAS.width, CANVAS.height);
+  CONTEXT.drawImage(VIDEO, BASE.x, BASE.y, BASE.width, BASE.height);
   for (let i = 0; i < PIECES.length; i++) {
     PIECES[i].draw(CONTEXT);
   }
