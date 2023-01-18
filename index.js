@@ -25,10 +25,13 @@ function main() {
 
 // this method runs all the time as it is an Animation
 function updateCanvas() {
-  // this used to draw the video over the BASE
-  // CONTEXT.drawImage(VIDEO, BASE.x, BASE.y, BASE.width, BASE.height);
-
   CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
+
+  // TIP translucid image for easy mode
+  CONTEXT.globalAlpha = 0.2;
+  CONTEXT.drawImage(VIDEO, BASE.x, BASE.y, BASE.width, BASE.height);
+  CONTEXT.globalAlpha = 1;
+
   for (let i = 0; i < PIECES.length; i++) {
     PIECES[i].draw(CONTEXT);
   }
