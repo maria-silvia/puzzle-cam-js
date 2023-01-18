@@ -13,6 +13,7 @@ function initCamera() {
       VIDEO.onloadeddata = function () {
         scaleCanvas();
         // window.addEventListener("resize", scaleCanvas);
+        initPieces();
         updateCanvas();
       };
     })
@@ -38,8 +39,6 @@ function scaleCanvas() {
 
 function initPieces() {
   PIECES = [];
-  PUZZLE.pieceWidth = BASE.width / PUZZLE.columns;
-  PUZZLE.pieceHeight = BASE.height / PUZZLE.rows;
   for (let r = 0; r < PUZZLE.rows; r++) {
     for (let c = 0; c < PUZZLE.columns; c++) {
       PIECES.push(new Piece(r, c));

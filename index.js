@@ -14,8 +14,6 @@ let BASE = {
 let PUZZLE = {
   rows: 3,
   columns: 3,
-  pieceWidth: null,
-  pieceHeight: null,
 };
 
 let PIECES = [];
