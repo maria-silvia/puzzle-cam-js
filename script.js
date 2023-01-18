@@ -54,6 +54,9 @@ function scaleCanvas() {
 
 function updateCanvas() {
   CONTEXT.drawImage(VIDEO, CANVAS.x, CANVAS.y, CANVAS.width, CANVAS.height);
+  for (let i = 0; i < PIECES.length; i++) {
+    PIECES[i].draw(CONTEXT);
+  }
   window.requestAnimationFrame(updateCanvas);
 }
 
@@ -61,27 +64,31 @@ function updateCanvas() {
 let PUZZLE = {
   rows: 3,
   columns: 3,
+  pieceWidth: null,
+  pieceHeight: null,
 };
 let PIECES = [];
 
-function initializePieces(params) {
+function initPieces() {
   PIECES = [];
+  PUZZLE.pieceWidth = CANVAS.width / PUZZLE.columns;
+  PUZZLE.pieceHeight = CANVAS.height / PUZZLE.rows;
   for (let r = 0; r < PUZZLE.rows; r++) {
-    for (let c = 0; c < PUZZLE.cols; c++) {
-      PIECES.push(new Piece(i, j));
+    for (let c = 0; c < PUZZLE.columns; c++) {
+      PIECES.push(new Piece(r, c));
     }
   }
 }
 class Piece {
   constructor(rowIndex, colIndex) {
+    this.x = CANVAS.x + colIndex * PUZZLE.pieceWidth;
+    this.y = CANVAS.y + rowIndex * PUZZLE.pieceHeight;
     this.rowIndex = rowIndex;
     this.colIndex = colIndex;
-    // calculate coordenates
-    this.x = CANVAS.x + (CANVAS.width * this.colIndex) / PUZZLE.columns;
-    this.y = CANVAS.y + (CANVAS.height * this.rowIndex) / PUZZLE.rows;
   }
   draw(context) {
     context.beginPath();
-    context.rect(this.x, this.y, this.width, this.height);
+    context.rect(this.x, this.y, PUZZLE.pieceWidth, PUZZLE.pieceHeight);
+    context.stroke();
   }
 }
