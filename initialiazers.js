@@ -14,6 +14,7 @@ function initCamera() {
         scaleCanvas();
         // window.addEventListener("resize", scaleCanvas);
         initPieces();
+        randomizePieces();
         updateCanvas();
       };
     })
@@ -44,7 +45,6 @@ function initPieces() {
       PIECES.push(new Piece(r, c));
     }
   }
-  randomizePieces();
 }
 
 function randomizePieces() {

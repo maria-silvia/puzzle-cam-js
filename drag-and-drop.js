@@ -7,6 +7,9 @@ function addEventListeners() {
 function onMouseDown(event) {
   SELECTED_PIECE = getPressedPiece(event);
   if (SELECTED_PIECE != null) {
+    const index = PIECES.indexOf(SELECTED_PIECE);
+    PIECES.splice(index, 1);
+    PIECES.push(SELECTED_PIECE);
     SELECTED_PIECE.offset = {
       x: event.x - SELECTED_PIECE.x,
       y: event.y - SELECTED_PIECE.y,
@@ -29,7 +32,8 @@ function onMouseUp() {
 }
 
 function getPressedPiece(cursor) {
-  for (let i = 0; i < PIECES.length; i++) {
+  // top pieces are at end of array, bottom pieces at start
+  for (let i = PIECES.length - 1; i >= 0; i--) {
     if (
       cursor.x > PIECES[i].x &&
       cursor.x < PIECES[i].x + PIECES[i].width &&
