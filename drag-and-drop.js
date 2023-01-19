@@ -37,14 +37,14 @@ function onMouseUp() {
   SELECTED_PIECE = null;
 }
 
-function getPressedPiece(cursor) {
+function getPressedPiece(player) {
   // top pieces are at end of array, bottom pieces at start
   for (let i = PIECES.length - 1; i >= 0; i--) {
     if (
-      cursor.x > PIECES[i].x &&
-      cursor.x < PIECES[i].x + PIECES[i].width &&
-      cursor.y > PIECES[i].y &&
-      cursor.y < PIECES[i].y + PIECES[i].height
+      player.x > PIECES[i].x &&
+      player.x < PIECES[i].x + PIECES[i].width &&
+      player.y > PIECES[i].y &&
+      player.y < PIECES[i].y + PIECES[i].height
     ) {
       return PIECES[i];
     }
