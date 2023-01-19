@@ -1,6 +1,8 @@
 function initCanvas() {
   CANVAS = document.getElementById("myCanvas");
   CONTEXT = CANVAS.getContext("2d");
+  CANVAS.width = window.innerWidth;
+  CANVAS.height = window.innerHeight;
 }
 
 function initCamera() {
@@ -12,10 +14,8 @@ function initCamera() {
       VIDEO.play();
       VIDEO.onloadeddata = function () {
         scaleBase();
+        start();
         // window.addEventListener("resize", scaleBase);
-        initPieces();
-        randomizePieces();
-        updateCanvas();
       };
     })
     .catch((err) => {
@@ -24,8 +24,6 @@ function initCamera() {
 }
 
 function scaleBase() {
-  CANVAS.width = window.innerWidth;
-  CANVAS.height = window.innerHeight;
   let resizer =
     SCALER *
     Math.min(
@@ -44,16 +42,5 @@ function initPieces() {
     for (let c = 0; c < PUZZLE.columns; c++) {
       PIECES.push(new Piece(r, c));
     }
-  }
-}
-
-function randomizePieces() {
-  for (let i = 0; i < PIECES.length; i++) {
-    // the random generates number between 0 and 1
-    // so need to scale:
-    let x = Math.random() * (CANVAS.width - PIECES[i].width);
-    let y = Math.random() * (CANVAS.height - PIECES[i].height);
-    PIECES[i].x = x;
-    PIECES[i].y = y;
   }
 }

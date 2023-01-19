@@ -1,11 +1,25 @@
 body {
- margin: 0;
- overflow: hidden;
- overscroll-behavior: none;
+    margin: 0;
+    overflow: hidden;
+    overscroll-behavior: none;
+    font-family: Georgia, sans-serif;
 }
 
 #menu {
+    width: 100%;
     margin: 10px;
     position: fixed;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+#sizeControls {
+    margin-inline: 30px;
+}
+
+#rowsInput, #colsInput {
+    width: 45px;
+    margin-right: 10px;
 }
 

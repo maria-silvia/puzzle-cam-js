@@ -15,7 +15,7 @@ let BASE = {
 
 let PUZZLE = {
   rows: 3,
-  columns: 6,
+  columns: 3,
 };
 
 let PIECES = [];
@@ -29,6 +29,31 @@ function main() {
   initCamera();
   addDragDropEventListeners();
   setSlider();
+}
+
+function start() {
+  updatePUZZLE();
+  initPieces();
+  randomizePieces();
+  updateCanvas();
+}
+
+function updatePUZZLE() {
+  let rowsInput = document.getElementById("rowsInput");
+  let colsInput = document.getElementById("colsInput");
+  PUZZLE.rows = rowsInput.value;
+  PUZZLE.columns = colsInput.value;
+}
+
+function randomizePieces() {
+  for (let i = 0; i < PIECES.length; i++) {
+    // the random generates number between 0 and 1
+    // so need to scale:
+    let x = Math.random() * (CANVAS.width - PIECES[i].width);
+    let y = Math.random() * (CANVAS.height - PIECES[i].height);
+    PIECES[i].x = x;
+    PIECES[i].y = y;
+  }
 }
 
 // this method runs all the time as it makes an Animation

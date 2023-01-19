@@ -12,8 +12,15 @@
 
   <body onload="main()">
     <div id="menu">
-      <div class="slidecontainer">
+      <div>
         <input type="range" min="0" max="6" id="transparencyRange" />
+      </div>
+      <div id="sizeControls">
+        <label for="rows">Rows</label>
+        <input type="number" min="1" value="3" name="rows" id="rowsInput" />
+        <label for="cols">Cols</label>
+        <input type="number" min="1" value="3" name="cols" id="colsInput" />
+        <button onclick="start()">Restart</button>
       </div>
     </div>
     <canvas id="myCanvas"></canvas>
