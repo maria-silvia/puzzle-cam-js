@@ -4,3 +4,8 @@ body {
  overscroll-behavior: none;
 }
 
+#menu {
+    margin: 10px;
+    position: fixed;
+}
+

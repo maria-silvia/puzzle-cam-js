@@ -37,7 +37,7 @@ class Piece {
   }
 
   isCloseToTarget() {
-    let threshold = Math.min(this.width / 5, this.height / 5);
+    let threshold = Math.min(this.width / 3, this.height / 3);
     let cursor = { x: this.x, y: this.y };
     let target = { x: this.target_x, y: this.target_y };
     if (distance(cursor, target) < threshold) {

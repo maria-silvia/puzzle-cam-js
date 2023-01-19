@@ -1,15 +1,21 @@
 <html>
-    <head>
-        <title>Camera Puzzle</title>
-        <script type="text/javascript" src="helpers.js"></script>
-        <script type="text/javascript" src="Piece.js"></script>
-        <script type="text/javascript" src="initialiazers.js"></script>
-        <script type="text/javascript" src="drag-and-drop.js"></script>
-        <script type="text/javascript" src="index.js"></script>
-        <link rel="stylesheet" href="style.css">
-    </head>
+  <head>
+    <title>Camera Puzzle</title>
+    <script type="text/javascript" src="slider.js"></script>
+    <script type="text/javascript" src="helpers.js"></script>
+    <script type="text/javascript" src="Piece.js"></script>
+    <script type="text/javascript" src="initialiazers.js"></script>
+    <script type="text/javascript" src="drag-and-drop.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    <body onload="main()">
-        <canvas id="myCanvas"></canvas>
-    </body>
+  <body onload="main()">
+    <div id="menu">
+      <div class="slidecontainer">
+        <input type="range" min="0" max="6" id="transparencyRange" />
+      </div>
+    </div>
+    <canvas id="myCanvas"></canvas>
+  </body>
 </html>

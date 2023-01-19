@@ -1,4 +1,4 @@
-function addEventListeners() {
+function addDragDropEventListeners() {
   CANVAS.addEventListener("mousedown", onMouseDown);
   CANVAS.addEventListener("mousemove", onMouseMove);
   CANVAS.addEventListener("mouseup", onMouseUp);

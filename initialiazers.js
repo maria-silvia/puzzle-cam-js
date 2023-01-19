@@ -11,8 +11,8 @@ function initCamera() {
       VIDEO.srcObject = signal;
       VIDEO.play();
       VIDEO.onloadeddata = function () {
-        scaleCanvas();
-        // window.addEventListener("resize", scaleCanvas);
+        scaleBase();
+        // window.addEventListener("resize", scaleBase);
         initPieces();
         randomizePieces();
         updateCanvas();
@@ -23,7 +23,7 @@ function initCamera() {
     });
 }
 
-function scaleCanvas() {
+function scaleBase() {
   CANVAS.width = window.innerWidth;
   CANVAS.height = window.innerHeight;
   let resizer =
