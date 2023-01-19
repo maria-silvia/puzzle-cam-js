@@ -20,6 +20,7 @@ let PUZZLE = {
 
 let PIECES = [];
 let SELECTED_PIECE = null;
+let TRANSPARENCY = 0.1;
 
 /*------------------------------------------------*/
 
@@ -34,7 +35,7 @@ function updateCanvas() {
   CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
 
   // TIP translucid image for easy mode
-  CONTEXT.globalAlpha = 0.2;
+  CONTEXT.globalAlpha = TRANSPARENCY;
   CONTEXT.drawImage(VIDEO, BASE.x, BASE.y, BASE.width, BASE.height);
   CONTEXT.globalAlpha = 1;
 

@@ -2,9 +2,14 @@ function addEventListeners() {
   CANVAS.addEventListener("mousedown", onMouseDown);
   CANVAS.addEventListener("mousemove", onMouseMove);
   CANVAS.addEventListener("mouseup", onMouseUp);
+  // mobile support:
+  CANVAS.addEventListener("touchstart", onMouseDown);
+  CANVAS.addEventListener("touchmove", onMouseMove);
+  CANVAS.addEventListener("touchend", onMouseUp);
 }
 
 function onMouseDown(event) {
+  event = convertIfTouchEvent(event);
   SELECTED_PIECE = getPressedPiece(event);
   if (SELECTED_PIECE != null) {
     const index = PIECES.indexOf(SELECTED_PIECE);
@@ -18,6 +23,7 @@ function onMouseDown(event) {
 }
 
 function onMouseMove(event) {
+  event = convertIfTouchEvent(event);
   if (SELECTED_PIECE != null) {
     SELECTED_PIECE.x = event.x - SELECTED_PIECE.offset.x;
     SELECTED_PIECE.y = event.y - SELECTED_PIECE.offset.y;

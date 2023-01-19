@@ -5,3 +5,10 @@ function distance(cat1, cat2) {
       (cat1.y - cat2.y) * (cat1.y - cat2.y)
   );
 }
+
+function convertIfTouchEvent(event) {
+  if (event.touches) {
+    return { x: event.touches[0].clientX, y: event.touches[0].clientY };
+  }
+  return event;
+}
